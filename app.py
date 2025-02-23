@@ -30,7 +30,12 @@ class Extrapolator:
         return completion.choices[0].message.content
 
 app = Flask(__name__)
-CORS(app, origins=["http://127.0.0.1:5173"])  # Allow requests from your JS app's origin
+CORS(app, origins=[
+    "https://www.extrapolator.org",
+    "https://extrapolator.org",
+    "http://www.extrapolator.org",
+    "http://extrapolator.org",
+    "http://127.0.0.1:5173"])
 
 @app.route("/extrapolate", methods=["POST"])
 def extrapolate_route():
