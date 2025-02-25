@@ -74,6 +74,8 @@ def extrapolate_route():
 
     try:
         extrapolated_content = Extrapolator().extrapolate(text)
+        if extrapolated_content == 'I cannot extrapolate the text.':
+            return jsonify({"error": "I cannot extrapolate the text."}), 400
         
         # Create and store a new Extrapolation record in the DB.
         with Session(engine) as session:
